@@ -56,8 +56,8 @@
         } else {
             if (loading) {
                 loading = false;
-                // need to wait for stuff
-                setTimeout(refreshAccounts, 500);
+                // need to wait for stuff to load
+                setTimeout(refreshAccounts, 1000);
             } else {
                 currentNode.forEach((a) => {
                     if (a.textContent.includes(button_text)) {
