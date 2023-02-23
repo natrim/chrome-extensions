@@ -1,0 +1,31 @@
+html, body {
+  height: 100vh;
+}
+
+/* maker header smaller */
+
+html {
+  --ytd-masthead-height: 32px !important;
+}
+
+#masthead-container.ytd-app, ytd-masthead, #container.ytd-masthead, #background.ytd-masthead, #search-form.ytd-searchbox,
+ #searchbox-button.ytd-searchbox, #voice-search-button, #voice-search-button #button, #search-icon-legacy {
+  max-height: var(--ytd-masthead-height)!important;
+}
+
+#voice-search-button #button.ytd-button-renderer {
+  padding: 4px!important;
+}
+
+/* hide useless content */
+#footer,
+#voice-search-button,
+#sections > ytd-guide-section-renderer:nth-child(3),
+#sections > ytd-guide-section-renderer:nth-child(4),
+#contents > ytd-rich-section-renderer:nth-child(3),
+#contents > ytd-rich-section-renderer:nth-child(5),
+#contents > ytd-rich-section-renderer:nth-child(6),
+#contents ytd-reel-shelf-renderer
+{
+  display: none!important
+}
