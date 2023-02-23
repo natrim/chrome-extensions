@@ -46,9 +46,12 @@
     console.log("pop3 reload start");
     const refreshAccounts = () => {
         const currentNode = document.querySelectorAll("span[role=link]");
-        if (currentNode === null || currentNode.length === 0) {
+        if (!Array.prototype.some.call(currentNode, ((a) => {
+            return a.textContent.includes(button_text);
+        }))) {
             if (limiter > limit) {
-                console.log("no gmail settings page, abort pop3 reload");
+                console.log("no gmail pop3 found, abort reload");
+                window.location.assign('https://mail.google.com/mail/u/'+gmail_acc_number+'/'+(isRefreshAvailable ? hash : '#inbox'));
                 return;
             }
             limiter++;
