@@ -32,12 +32,22 @@
       case "#chats":
       case "#starred":
       case "#sent":
+      case "#outbox":
+      case "#snoozed":
+      case "#scheduled":
+      case "#drafts":
         isRefreshAvailable = true;
         break;
       default:
         if (top.location.hash.match(/#label/gi)) {
           isRefreshAvailable = true;
+        } else if (top.location.hash.match(/#category/gi)) {
+          isRefreshAvailable = true;
         }
+    }
+    if (!isRefreshAvailable) {
+        console.log("pop3 reload skip");
+        return;
     }
     window.location.assign('https://mail.google.com/mail/u/'+gmail_acc_number+'/#settings/accounts');
     let loading = true;
