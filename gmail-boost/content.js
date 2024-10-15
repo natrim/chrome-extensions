@@ -1,11 +1,15 @@
+
+
+const run = () => {
+
 // set theme-color
-(function() {
-    var theme = document.querySelector("[name=theme-color]")
+(() => {
+    const theme = document.querySelector("[name=theme-color]")
     if (theme) {
         theme.content = "hsla(200, 19%, 20%, 1)";
         // theme.media= "(prefers-color-scheme: dark)";
     } else {
-        var meta = document.createElement("meta");
+        const meta = document.createElement("meta");
         meta.name = "theme-color";
         meta.content = "hsla(200, 19%, 20%, 1)";
         // meta.media= "(prefers-color-scheme: dark)";
@@ -14,12 +18,14 @@
 })();
 
 // read all pop3
- (function () {
+setTimeout(() => {
+    // work only on first google account
     const gmail_acc_number = 0;
-    const button_text = document.querySelector('html').lang === "cs" ? "Zkontrolovat poštu teď" : "Check mail now";
-    if(window.location.href.indexOf("https://mail.google.com/") === -1){
+    if (window.location.href.indexOf("https://mail.google.com/mail/u/" + gmail_acc_number + "/") === -1) {
+        console.log("no allowed gmail acc found");
         return;
     }
+    const button_text = document.querySelector('html').lang === "cs" ? "Zkontrolovat poštu teď" : "Check mail now";
     let isRefreshAvailable = false;
     const hash = window.top.location.hash;
     switch (hash) {
@@ -49,7 +55,7 @@
         console.log("pop3 reload skip");
         return;
     }
-    window.location.assign('https://mail.google.com/mail/u/'+gmail_acc_number+'/#settings/accounts');
+    window.location.assign('https://mail.google.com/mail/u/' + gmail_acc_number + '/#settings/accounts');
     let loading = true;
     let limit = 50;
     let limiter = 0;
@@ -61,7 +67,7 @@
         }))) {
             if (limiter > limit) {
                 console.log("no gmail pop3 found, abort reload");
-                window.location.assign('https://mail.google.com/mail/u/'+gmail_acc_number+'/'+(isRefreshAvailable ? hash : '#inbox'));
+                window.location.assign('https://mail.google.com/mail/u/' + gmail_acc_number + '/' + (isRefreshAvailable ? hash : '#inbox'));
                 return;
             }
             limiter++;
@@ -78,9 +84,20 @@
                     }
                 });
                 console.log("pop3 reload done");
-                window.location.assign('https://mail.google.com/mail/u/'+gmail_acc_number+'/'+(isRefreshAvailable ? hash : '#inbox'));
+                window.location.assign('https://mail.google.com/mail/u/' + gmail_acc_number + '/' + (isRefreshAvailable ? hash : '#inbox'));
             }
         }
     };
     setTimeout(refreshAccounts, 100);
-})();
+}, 5000);
+
+};
+
+
+if (document.readyState === "complete") {
+    run();
+} else {
+    window['onload'] = () => {
+        run();
+    };
+}
