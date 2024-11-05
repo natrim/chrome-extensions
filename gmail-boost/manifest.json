@@ -1,6 +1,6 @@
 {
-  "name": "Gmail UI enhancement CZECH",
-  "version": "0.0.1",
+  "name": "Gmail enhancement CZECH",
+  "version": "0.0.2",
   "manifest_version": 3,
   "content_scripts": [
     {
@@ -12,9 +12,22 @@
       ],
       "js": [
         "content.js"
-      ],
-      "run_at": "document_start"
+      ]
     }
   ],
-  "permissions": []
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
+  "action": {
+    "default_title": "GMAIL Pop3 Reload",
+    "default_icon": {
+      "16": "icon-16.png",
+      "48": "icon-48.png",
+      "128": "icon-128.png"
+    }
+  }
 }

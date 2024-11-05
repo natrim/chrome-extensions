@@ -20,12 +20,14 @@ html {
 /* hide useless content */
 #footer,
 #voice-search-button,
+/* left panel browse and more youtube plans */
 #sections > ytd-guide-section-renderer:nth-child(3),
-#sections > ytd-guide-section-renderer:nth-child(4),
+#sections > ytd-guide-section-renderer:nth-child(4)
+/* shorts */
+/*,
 #contents > ytd-rich-section-renderer:nth-child(3),
-#contents > ytd-rich-section-renderer:nth-child(5),
-#contents > ytd-rich-section-renderer:nth-child(6),
 #contents ytd-reel-shelf-renderer
+*/
 {
   display: none!important
 }
